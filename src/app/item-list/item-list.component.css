@@ -1,0 +1,11 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.btn-orange {
+    background-color: orange; /* Set the background color to orange */
+    color: black; /* Set the text color to white for contrast */
+}
+
+.btn-orange:hover {
+    background-color: darkorange; /* Darker shade for hover effect */
+    color: black; /* Maintain text color on hover */
+}

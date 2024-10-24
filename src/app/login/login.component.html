@@ -1,0 +1,87 @@
+<app-home> </app-home>
+
+<form  *ngIf="!isLogin()" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <h2 class="mt-5 mb-2 lead">Login</h2>
+    <hr>
+
+    <div class="row mb-3 justify-content-center">
+        <div *ngIf="loginFailed" class="col-4 alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Oh snap!</strong> login failed.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="clearAlert()"></button>
+        </div>
+
+    </div>
+    <div class="row mb-3 justify-content-center">
+
+        <div class="col-4">
+            <label class="form-label">Username</label>
+            <input class="form-control" type="text"  formControlName="username"/>
+            <small class="text-danger" *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
+                 Username is required.
+            </small>
+        </div>   
+    </div>           
+    <div class="row mb-3 justify-content-center">
+        <div class="col-4">
+            <!-- <small class="text-danger"> -->
+            <label class="form-label">Password</label>
+            <input class="form-control" type="password"  formControlName="password"/>
+            <small class="text-danger" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+                Password is required.
+           </small>
+        </div>   
+    </div>
+
+    <div class="row mb-3 justify-content-center">
+        <div class="col-4 d-flex justify-content-center"> <!-- Added d-flex and justify-content-center -->
+            <button type="submit" class="btn btn-primary me-3" [disabled]="userForm.invalid">Submit</button>
+        </div>   
+    </div>
+</form>
+
+
+  <!-- Show a message when the user is successfully logged in -->
+  <!-- <div  *ngIf="isLogin()"  class="alert alert-success" role="alert">
+    You are successfully logged in! - Welcome.
+
+  </div> -->
+
+  <div *ngIf="isLogin()">
+    <!-- Show a message when the user is successfully logged in -->
+    <div class="alert alert-success" role="alert">
+      You are successfully logged in! - Welcome.
+    </div>
+
+<h2  class="mt-5 mb-2 lead">Menu</h2>
+
+<hr>
+
+<ul>
+  <li>
+    <a class="icon-link icon-link-hover" [routerLink]="['/list']"  >
+      Edit Item
+    </a>
+  </li>
+  <li>
+    <a class="icon-link icon-link-hover" [routerLink]="['/approve']"  >
+      Approve & Reject Item
+    </a>
+  </li>
+  <li>
+    <a class="icon-link icon-link-hover" (click)="logout()"  >
+      Logout
+    </a>
+  </li>
+</ul>
+
+
+
+  
+    <!-- <h2  class="mt-5 mb-2 lead">Welcome to the Home Page</h2> -->
+    <!-- <button class="btn btn-danger" (click)="logout()">Logout</button> -->
+  </div>
+  
+  <!-- <ng-template #loginBlock>
+    <h2>You are not logged in</h2>
+    <a routerLink="/login" class="btn btn-primary">Login</a>
+  </ng-template> -->

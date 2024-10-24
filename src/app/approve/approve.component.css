@@ -1,0 +1,22 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+
+.btn-custom-secondary {
+    background-color: darkorange; /* Change this to your desired color */
+    
+}
+.btn-custom-secondary:disabled {
+    background-color: darkorange; /* Change hover color */
+    color: white; /* Change text color on hover */
+}
+
+.btn-custom-secondary:hover {
+    background-color: #e55411; /* Change hover color */
+    color: white; /* Change text color on hover */
+}
+
+
+.text-dark-orange {
+    color: #ff8c00; /* Dark orange color code */
+}

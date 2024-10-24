@@ -1,0 +1,49 @@
+<app-home></app-home>
+
+
+
+<div *ngIf="isLogin(); else notLoggedIn">
+    <h2 class="mt-5 mb-2 lead">Item Approve & Reject</h2>
+
+
+    <div class="col-11">
+        <hr>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th></th> <!-- Empty header for action icons -->
+              <th>#</th>
+              <th>Title</th>
+              <th class="text-end">Amount</th> <!-- Align the Amount header to the right -->
+              <th class="text-end">Quantity</th>
+              <th class="text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items; let i = index">
+              <td class="text-center">
+                <!-- Edit and Delete icons with conditional rendering based on login status -->
+                <button (click)="approveItem(item)" class="btn btn-custom-secondary mx-2"  [disabled]="item.status=='APPROVED'"> Approve </button>
+                <button (click)="rejectItem(item)" class="btn btn-secondary mx-2" [disabled]="item.status=='REJECTED'"> Reject </button>
+                <!-- <i *ngIf="isLogin()" (click)="deleteItem(item.id)" class="bi bi-trash3-fill mx-2" aria-label="Delete"></i> -->
+              </td>
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.title }}</td>
+              <td class="text-end">{{ item.amount }}</td> <!-- Align the Amount data to the right -->
+              <td class="text-end">{{ item.quantity }}</td>
+              <td class="text-center">{{ item.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+
+
+</div>
+
+
+
+
+<ng-template #notLoggedIn>
+    <p>You are not logged in. Please navigate to the <a [routerLink]="['/']">login page</a>.</p>
+</ng-template>

@@ -1,0 +1,12 @@
+.btn-outline-orange {
+    /* background-color: orange; Set the background color to orange */
+    color: orange; /* Set the text color to white for contrast */
+}
+
+.btn-outline-orange:hover {
+    /* background-color: darkorange; Darker shade for hover effect */
+    color: darkorange; /* Maintain text color on hover */
+}
+.text-dark-orange {
+    color: #ff8c00; /* Dark orange color code */
+}

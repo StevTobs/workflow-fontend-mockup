@@ -1,0 +1,42 @@
+<app-home></app-home>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<h2 class="mt-5 mb-2 lead">Item List</h2>
+
+<div *ngIf="isLogin()" class="col-11 text-end">
+    <button [routerLink]="['/create']" class="btn btn-orange">Create</button>
+</div>
+
+<div class="col-11">
+  <hr>
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th></th> <!-- Empty header for action icons -->
+        <th>#</th>
+        <th>Title</th>
+        <th class="text-end">Amount</th> <!-- Align the Amount header to the right -->
+        <th class="text-end">Quantity</th>
+        <th class="text-center">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; let i = index">
+        <td class="text-center">
+          <!-- Edit and Delete icons with conditional rendering based on login status -->
+          <i *ngIf="isLogin()" [routerLink]="['/edit', item.id]" class="bi bi-pencil mx-2" aria-label="Edit"></i>
+          <i *ngIf="isLogin()" (click)="deleteItem(item.id)" class="bi bi-trash3-fill mx-2" aria-label="Delete"></i>
+        </td>
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.title }}</td>
+        <td class="text-end">{{ item.amount }}</td> <!-- Align the Amount data to the right -->
+        <td class="text-end">{{ item.quantity }}</td>
+        <td class="text-center">{{ item.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noItems>
+    <p>No items found.</p>
+</ng-template>
